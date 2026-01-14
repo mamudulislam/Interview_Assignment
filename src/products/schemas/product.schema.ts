@@ -14,6 +14,9 @@ export class Product {
     @Prop({ required: true })
     price: number;
 
+    @Prop({ required: true })
+    category: string;
+
     @Prop({ default: true })
     isActive: boolean;
 }
