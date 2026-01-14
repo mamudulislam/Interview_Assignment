@@ -24,14 +24,9 @@ async function bootstrap() {
   // Use global exception filter
   app.useGlobalFilters(new HttpExceptionFilter());
 
-  if (process.env.NODE_ENV !== 'production') {
-    const port = process.env.PORT || 3000;
-    await app.listen(port);
-    console.log(`Application is running on: http://localhost:${port}/api`);
-  }
-
-  return app.getHttpAdapter().getInstance();
+  const port = parseInt(process.env.PORT || '3000', 10);
+  await app.listen(port, '0.0.0.0');
+  console.log(`Application is running on: http://0.0.0.0:${port}/api`);
 }
 
-// Export the bootstrap function as a handler for Vercel
-export default bootstrap();
+bootstrap();
